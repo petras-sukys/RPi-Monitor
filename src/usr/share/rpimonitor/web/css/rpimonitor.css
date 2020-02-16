@@ -34,6 +34,7 @@
 /* Move content away from navbar */
 body { 
   padding-top: 50px;
+  background: rgb(51,51,51);
 }
 
 /* Move rrd graph away from navbar */
@@ -52,10 +53,8 @@ body {
   height:200px;  
 }
 
-.page-title {
-  text-align: center;
-  font-family: Tahoma, Helvetica;
-  font-size: 21px;
+.progress {
+  background-color: rgb(100, 100, 100);
 }
 
 .Title {
@@ -64,6 +63,7 @@ body {
   font-size: 21px;
   padding-left: 30px;
   width: 250px;
+  color: rgb(200, 200, 200);
 }
 
 .Text {
@@ -75,6 +75,7 @@ body {
   padding-right: 30px;
   padding-top: 15px;
   width: 518px;
+  color: rgb(200, 200, 200);
   white-space: nowrap;
 }
 
