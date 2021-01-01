@@ -43,7 +43,7 @@ configuration bellow:
 
 ::
 
-    web.status.1.content.1.title=WiFi
+    web.status.1.content.1.name=WiFi
     web.status.1.content.1.icon=wifi.png
     web.status.1.content.1.line.1="WiFi Sent: <b>"+KMG(data.wifi_send)+"<i class='icon-arrow-up'></i></b> Received: <b>"+KMG(Math.abs(data.wifi_received)) + "<i class='icon-arrow-down'></i></b>"
 
@@ -58,7 +58,7 @@ representing upstream and downstream metrics:
 
 ::
 
-    web.statistics.1.content.1.title=WiFi
+    web.statistics.1.content.1.name=WiFi
     web.statistics.1.content.1.graph.1=wifi_send
     web.statistics.1.content.1.graph.2=wifi_received
     web.statistics.1.content.1.ds_graph_options.wifi_send.label=Upload bandwidth (bits)
@@ -139,6 +139,7 @@ The configuration to add a new status strip will then be the following:
     web.status.1.content.1.line.1="<b>/storage1</b> Used: <b>"+KMG(data.storage1_used,'M')+"</b> (<b>"+Percent(data.storage1_used,data.storage1_total,'M')+"</b>) Free: <b>"+KMG(data.storage1_total-data.storage1_used,'M')+ "</b> Total: <b>"+ KMG(data.storage1_total,'M') +"</b>" 
     web.status.1.content.1.line.2=ProgressBar(data.storage1_used,data.storage1_total) 
     web.status.1.content.1.line.3="<b>/storage2</b> Used: <b>"+KMG(data.storage2_used,'M')+"</b> (<b>"+Percent(data.storage2_used,data.storage2_total,'M')+"</b>) Free: <b>"+KMG(data.storage2_total-data.storage2_used,'M')+ "</b> Total: <b>"+ KMG(data.storage2_total,'M') +"</b>"
+    web.status.1.content.1.line.4=ProgressBar(data.storage2_used,data.storage2_total)
 
 
 The configuration may need some explanation:
