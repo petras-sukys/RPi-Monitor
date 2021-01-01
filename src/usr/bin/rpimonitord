@@ -218,13 +218,22 @@ sub LoadFile
       $root ||= $current;
       if ( ( $root eq 'alert' ) || ( $root eq 'web' ) ) { $root = $current }
       $next = shift (@leaves);            # Shift the first element of @leaves in $next
-      if ( $next =~ /^\d+$/ ) {           # If $next is an integer -> we are in an array
-        if ($current =~ /^\d+$/) {        # If $current is an integer -> we are in an array
+
+      if ( $next =~ /^\+$/ ) {              # If $next is a '+', replace it with next index for current array
+        if ($current =~ /^\d+$/) {
           @{$tree}[$current-1] ||= [];    # If the branch is not an array, create an empty array
+          $next = scalar(@{$tree}[$current-1])
+        } else {
+          $tree->{$current} ||= [];       # If the branch is not an array, create an empty array
+          $next = scalar($tree->{$current})
+        }
+      }
+
+      if ( $next =~ /^\d+$/ ) {           # If $next is an integer or a '+' -> we are in an array
+        if ($current =~ /^\d+$/) {        # If $current is an integer -> we are in an array
           $tree=@{$tree}[$current-1];     # Define this array as $tree root
         }
         else {
-          $tree->{$current} ||= [];       # If the branch is not an array, create an empty array
           $tree=$tree->{$current};        # Define this array as $tree root
         }
       } else {                            # If $next is not an integer -> We are in a hash
