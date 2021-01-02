@@ -231,9 +231,11 @@ sub LoadFile
 
       if ( $next =~ /^\d+$/ ) {           # If $next is an integer or a '+' -> we are in an array
         if ($current =~ /^\d+$/) {        # If $current is an integer -> we are in an array
+          @{$tree}[$current-1] ||= [];    # If the branch is not an array, create an empty array
           $tree=@{$tree}[$current-1];     # Define this array as $tree root
         }
         else {
+          $tree->{$current} ||= [];       # If the branch is not an array, create an empty array
           $tree=$tree->{$current};        # Define this array as $tree root
         }
       } else {                            # If $next is not an integer -> We are in a hash
